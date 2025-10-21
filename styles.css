@@ -1,0 +1,31 @@
+ body {
+      font-family: 'Bebas Neue';
+    }
+
+ .row img {
+      transition: transform 0.2s;
+      
+      
+    }
+.row img:hover {
+      transform: scale(1.1);
+    }
+.bg-gradient-right {
+  background: linear-gradient(to right, rgb(138, 21, 21), black);
+}
+
+.bg-gradient-right2 {
+  background: linear-gradient(to right, rgb(69, 69, 157), black);
+}
+
+.bg-gradient-right3 {
+  background: linear-gradient(to right, rgb(25, 25, 158), black);
+}
+
+.bg-gradient-right4 {
+  background: linear-gradient(to right, rgb(97, 35, 35), black);
+}
+
+.merri {
+  font-family: 'Merriweather', serif;
+}
