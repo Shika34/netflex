@@ -27,8 +27,11 @@ function chargerItemDetail(){
             console.log(data);
 
             // Afficher les différentes catégories
-            afficherDetailItem(itemId, itemType);
+            // afficherDetailItem(itemId, itemType);
             let item = chercherItemParType(data, itemId, itemType);
+            
+            afficherDetailItem(item);
+            
             console.log(data);
 
         }else{
@@ -54,7 +57,7 @@ function chercherItemParType(data, itemId, itemType){
     //on va rechercher l'élément de notre xml par son style (films, séries etc...)
     // let items = data.netflop[itemType+"s"][itemType];
     // let idNetflop = data.netflop.item;
-    console.log("Items", items);
+    
     let categoryMap = {
         'film':{categorie:'films', tableau: data.netflop.films.film},
         'serie':{categorie:'series', tableau: data.netflop.series.serie},
@@ -80,11 +83,15 @@ function chercherItemParType(data, itemId, itemType){
         if(config.tableau && Array.isArray(config.tableau)){
             for(let i = 0; i < config.tableau.length; i++){
                 if (config.tableau[i].id === itemId){
+                    console.log("Items", config.tableau);
                 return config.tableau[i];
+                
             }  
         }
     }
+    
     return null;
+    
 }
 
 
@@ -176,7 +183,7 @@ function afficherDetailItem(item){
 
 
 
-console.log(chargerItemDetail());
+chargerItemDetail();
 
 
 
