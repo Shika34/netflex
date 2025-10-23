@@ -4,11 +4,13 @@
 
  .row img {
       transition: transform 0.2s;
-      
+      width: 25%;
+      height: 50%;
       
     }
 .row img:hover {
       transform: scale(1.1);
+    
     }
 .bg-gradient-right {
   background: linear-gradient(to right, rgb(138, 21, 21), black);
@@ -28,4 +30,58 @@
 
 .merri {
   font-family: 'Merriweather', serif;
+}
+
+section {
+  display: flex;                /* active le mode flexbox */
+  justify-content: space-between; /* espace égal entre les rectangles */
+  align-items: center;          /* alignement vertical centré */
+  gap: 20px;                    /* espace entre les rectangles */
+  flex-wrap: wrap;              /* passe à la ligne si manque de place */
+  padding: 20px;
+  width: 100%;                  /* occupe toute la largeur */
+  box-sizing: border-box;       /* inclut le padding dans la largeur */
+  
+}
+
+/* style optionnel pour les blocs enfants */
+section > div {
+  flex: 1 1 200px;              /* chaque bloc prend au moins 200px et s’adapte */
+  height: 150px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+
+/* .div{
+  
+  border: 2px solid white;    
+  border-radius: 10px;        
+  width: 200px;               
+  height: 150px;              
+  display: flex;              
+  justify-content: center;    
+  align-items: center;        
+  color: white;
+} */
+
+section img {
+  width: 550px;
+  height: 800px;
+  display: block;          /* enlève l’espacement inline */
+  margin: 0 auto;          /* centre horizontalement */
+}
+
+
+.card {
+  background-color: transparent;
+  color: white;
+  border: 0px;  
+ }
+
+.card img {
+  width: 80%;
+  
+  display: block;          /* enlève l’espacement inline */
+  margin: 0 auto;          /* centre horizontalement */
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <netflop>
-  <films>
-    <film id="film_1">
+  <films xml:id="film">
+    <film xml:id="1">
       <url>Pictures/f1.jpg</url>
       <nom>Split</nom>
       <genre>Thriller</genre>
@@ -18,7 +18,7 @@
         alors que les divisions qui régnaient jusqu’alors dans son subconscient volent en éclats.
       </resumer>
     </film>
-    <film id="film_2">
+    <film xml:id="2">
       <url>Pictures/f2.jpg</url>
       <nom>Shutter Island</nom>
       <genre>Thriller</genre>
@@ -33,7 +33,7 @@
         Oeuvre cohérente d'une malade, ou cryptogramme ?
       </resumer>
     </film>
-    <film id="film_3">
+    <film xml:id ="3">
       <url>Pictures/f3.jpg</url>
       <nom>Insidious</nom>
       <genre>Horreur</genre>
@@ -48,7 +48,7 @@
         Josh va devoir lui aussi quitter son corps et s’aventurer dans l’au-delà ...
       </resumer>
     </film>
-    <film id="film_4">
+    <film xml:id ="4">
       <url>Pictures/f4.jpg</url>
       <nom>Ace ventura</nom>
       <genre>Comedie</genre>
@@ -61,9 +61,9 @@
       </resumer>
     </film>
   </films>
-  <series>
-    <serie id="serie_1">
-      <url>Pictures/s1.jpg</url>
+  <series xml:id="serie" class="col-3 ">
+    <serie xml:id="1">
+      <url class="rounded w-75 h-100 ">Pictures/s1.jpg</url>
       <nom>Walking Dead</nom>
       <genre>Horreur</genre>
       <realisateur>Robert Kirkman</realisateur>
@@ -81,7 +81,7 @@
 
       </resumer>
     </serie>
-    <serie id="serie_2">
+    <serie xml:id="2">
       <url>Pictures/s2.jpg</url>
       <nom>Game of Thrones</nom>
       <genre>Aventure</genre>
@@ -101,8 +101,8 @@
 
       </resumer>
     </serie>
-    <serie id="serie_3">
-      <url>Pictures/s5.jpg</url>
+    <serie xml:id ="3">
+      <url class="col-3 ">Pictures/s5.jpg</url>
       <nom>Malcom</nom>
       <genre>Comedie</genre>
       <realisateur>L.Boomer</realisateur>
@@ -118,11 +118,14 @@
         Casting : Avec Andrew Lincoln, Sarah Wayne Callies, Laurie Holden, Steven Yeun, Chandler Riggs, Jon Bernthal, Jeffrey DeMunn, Norman Reedus, Lauren Cohan et Danai Gurira.
         Zone de message
 
+        Envoyer un message à @Lopez Nicolas
+
+        *gras* _italique_ ~barré~ `code` ```préformaté``` >citation
       </resumer>
     </serie>
-    <serie id="serie_4">
+    <serie xml:id="4">
       <url>Pictures/s3.jpg</url>
-      <nom>House of Card</nom>
+      <nom>House of CArd</nom>
       <genre>Drame</genre>
       <realisateur>D.Weiss</realisateur>
       <dateSortie>16/07/2014</dateSortie>
@@ -138,9 +141,9 @@
       </resumer>
     </serie>
   </series>
-  <documentaires>
-    <documentaire id="documentaire_1">
-      <url>Pictures/d1.jpg</url>
+  <documentaires xml:id="documentaire">
+    <documentaire xml:id="1">
+      <url>Pictures/f1.jpg</url>
       <nom>Super High Me</nom>
       <genre>Documentaire</genre>
       <realisateur>Michael Lieden</realisateur>
@@ -150,8 +153,8 @@
         va consommer durant 30 jours une énorme quantité de Marijuana.
       </resumer>
     </documentaire>
-    <documentaire id="documentaire_2">
-      <url>Pictures/d2.jpg</url>
+    <documentaire xml:id="2">
+      <url>Pictures/f2.jpg</url>
       <nom>Le Peuple Migrateur</nom>
       <genre>Documentaire</genre>
       <realisateur>Jacques Perrin</realisateur>
@@ -163,8 +166,8 @@
         leurs escales saisonnières. Avec ce conte réel, il a également voulu montrer la précarité de leur vie et leur inaltérable beauté.
       </resumer>
     </documentaire>
-    <documentaire id="documentaire_3">
-      <url>Pictures/d3.jpg</url>
+    <documentaire xml:id="3">
+      <url>Pictures/f1.jpg</url>
       <nom>Bowling for Columbine</nom>
       <genre>Documentaire</genre>
       <realisateur>Michael Moore</realisateur>
@@ -175,8 +178,8 @@
         alors été assassinés par deux de leurs camarades.
       </resumer>
     </documentaire>
-    <documentaire id="documentaire_4">
-      <url>Pictures/d4.jpg</url>
+    <documentaire xml:id="4">
+      <url>Pictures/f1.jpg</url>
       <nom>Citizenfour</nom>
       <genre>Documentaire</genre>
       <realisateur>Laura Poitras</realisateur>
@@ -189,9 +192,9 @@
       </resumer>
     </documentaire>
   </documentaires>
-  <mangas>
-    <manga id="manga_1">
-      <url>Pictures/m1.jpg</url>
+  <mangas xml:id="manga">
+    <manga xml:id ="1">
+      <url>Pictures/f1.jpg</url>
       <nom>Ghost in the Shell</nom>
       <genre>cyberpunk </genre>
       <realisateur> Mamoru Oshii</realisateur>
@@ -201,8 +204,8 @@
         ,traque le plus grand cyber-terrosite du monde, le "Puppet Master"
       </resumer>
     </manga>
-    <manga id="manga_2">
-      <url>Pictures/m2.jpg</url>
+    <manga xml:id="2">
+      <url>Pictures/f1.jpg</url>
       <nom>Perfect Blue</nom>
       <genre>thriller </genre>
       <realisateur>  Satoshi Kon</realisateur>
@@ -213,8 +216,8 @@
         s'attirant la haine de ses anciens fans...
       </resumer>
     </manga>
-    <manga id="manga_3">
-      <url>Pictures/m3.jpg</url>
+    <manga xml:id="3">
+      <url>Pictures/f1.jpg</url>
       <nom>Le voyage de Chihiro</nom>
       <genre>fantastique </genre>
       <realisateur> Hayao Miyazaki</realisateur>
@@ -226,8 +229,8 @@
         libérer ses parents changés en cochons.
       </resumer>
     </manga>
-    <manga id="manga_4">
-      <url>Pictures/m4.jpg</url>
+    <manga xml:id ="4">
+      <url>Pictures/f1.jpg</url>
       <nom>Le tombeau des lucioles</nom>
       <genre> drame</genre>
       <realisateur>Isao Takahata</realisateur>
@@ -238,9 +241,9 @@
       </resumer>
     </manga>
  </mangas>
-  <animes>
-    <anime id="anime_1">
-      <url>Pictures/d1.jpg</url>
+  <animes xml:id="animes">
+    <anime xml:id="1">
+      <url>Pictures/f1.jpg</url>
       <nom>Super High Me</nom>
       <genre>Documentaire</genre>
       <realisateur>Michael Lieden</realisateur>
@@ -250,8 +253,8 @@
         va consommer durant 30 jours une énorme quantité de Marijuana.
       </resumer>
     </anime>
-    <anime id="anime_2">
-      <url>Pictures/d2.jpg</url>
+    <anime xml:id="2">
+      <url>Pictures/f2.jpg</url>
       <nom>Le Peuple Migrateur</nom>
       <genre>Documentaire</genre>
       <realisateur>Jacques Perrin</realisateur>
@@ -263,8 +266,8 @@
         leurs escales saisonnières. Avec ce conte réel, il a également voulu montrer la précarité de leur vie et leur inaltérable beauté.
       </resumer>
     </anime>
-    <anime id="anime_3">
-      <url>Pictures/d3.jpg</url>
+    <anime xml:id="3">
+      <url>Pictures/f1.jpg</url>
       <nom>Bowling for Columbine</nom>
       <genre>Documentaire</genre>
       <realisateur>Michael Moore</realisateur>
@@ -275,8 +278,9 @@
         alors été assassinés par deux de leurs camarades.
       </resumer>
     </anime>
-    <anime id="anime_4">
-      <url>Pictures/d4.jpg</url>
+
+    <anime xml:id="4">
+      <url>Pictures/f1.jpg</url>
       <nom>Citizenfour</nom>
       <genre>Documentaire</genre>
       <realisateur>Laura Poitras</realisateur>
@@ -289,9 +293,9 @@
       </resumer>
     </anime>
   </animes>
-  <shows>
-    <show id="show_1">
-      <url>Pictures/d1.jpg</url>
+  <shows xml:id="show">
+    <show xml:id="1">
+      <url>Pictures/f1.jpg</url>
       <nom>Super High Me</nom>
       <genre>Documentaire</genre>
       <realisateur>Michael Lieden</realisateur>
@@ -301,8 +305,8 @@
         va consommer durant 30 jours une énorme quantité de Marijuana.
       </resumer>
     </show>
-    <show id="show_2">
-      <url>Pictures/d2.jpg</url>
+    <show xml:id="2">
+      <url>Pictures/f2.jpg</url>
       <nom>The fly circus</nom>
       <genre>Show</genre>
       <realisateur>Jacques Perrin</realisateur>
@@ -314,8 +318,8 @@
         leurs escales saisonnières. Avec ce conte réel, il a également voulu montrer la précarité de leur vie et leur inaltérable beauté.
       </resumer>
     </show>
-    <show id="show_3">
-      <url>Pictures/d3.jpg</url>
+    <show xml:id="3">
+      <url>Pictures/f1.jpg</url>
       <nom>Les nuls la grosse emission</nom>
       <genre>Show</genre>
       <realisateur>Michael Moore</realisateur>
@@ -326,8 +330,9 @@
         alors été assassinés par deux de leurs camarades.
       </resumer>
     </show>
-    <show id="show_4">
-      <url>Pictures/d4.jpg</url>
+
+    <show xml:id="4">
+      <url>Pictures/f1.jpg</url>
       <nom>The late show</nom>
       <genre>Show</genre>
       <realisateur>Laura Poitras</realisateur>
@@ -340,9 +345,9 @@
       </resumer>
     </show>
   </shows>
-  <concerts>
-    <concert id="concert_1">
-      <url>Pictures/d1.jpg</url>
+  <concerts xml:id="concert">
+    <concert xml:id="1">
+      <url>Pictures/f1.jpg</url>
       <nom>Super High Me</nom>
       <genre>Concert</genre>
       <realisateur>Michael Lieden</realisateur>
@@ -352,8 +357,8 @@
         va consommer durant 30 jours une énorme quantité de Marijuana.
       </resumer>
     </concert>
-    <concert id="concert_2">
-      <url>Pictures/d2.jpg</url>
+    <concert xml:id="2">
+      <url>Pictures/f2.jpg</url>
       <nom>Le Peuple Migrateur</nom>
       <genre>Concert</genre>
       <realisateur>Jacques Perrin</realisateur>
@@ -365,8 +370,8 @@
         leurs escales saisonnières. Avec ce conte réel, il a également voulu montrer la précarité de leur vie et leur inaltérable beauté.
       </resumer>
     </concert>
-    <concert id="concert_3">
-      <url>Pictures/d3.jpg</url>
+    <concert xml:id="3">
+      <url>Pictures/f1.jpg</url>
       <nom>A real dead one</nom>
       <genre>Concert</genre>
       <realisateur>Michael Moore</realisateur>
@@ -377,8 +382,9 @@
         alors été assassinés par deux de leurs camarades.
       </resumer>
     </concert>
-    <concert id="concert_4">
-      <url>Pictures/d4.jpg</url>
+
+    <concert xml:id="4">
+      <url>Pictures/f1.jpg</url>
       <nom>A</nom>
       <genre>Concert</genre>
       <realisateur>Laura Poitras</realisateur>
@@ -390,8 +396,8 @@
         un document historique unique et un portrait intime d’Edward Snowden.
       </resumer>
     </concert>
-    <concert id="concert_5">
-      <url>Pictures/m4.jpg</url>
+    <concert xml:id="5">
+      <url>Pictures/f1.jpg</url>
       <nom>Citizenfour</nom>
       <genre>Concert</genre>
       <realisateur>Laura Poitras</realisateur>
@@ -403,8 +409,8 @@
         un document historique unique et un portrait intime d’Edward Snowden.
       </resumer>
     </concert>
-    <concert id="concert_6">
-      <url>Pictures/d3.jpg</url>
+    <concert xml:id="6">
+      <url>Pictures/f1.jpg</url>
       <nom>Citizenfour</nom>
       <genre>Concert</genre>
       <realisateur>Laura Poitras</realisateur>
