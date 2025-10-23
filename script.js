@@ -1,5 +1,5 @@
 // Netflop verion XMLHttpRequest
-JSON.parse();
+
 function chargerNetflopXml(){
     // Créer un nouvel objet XMLHttpRequest 
     let xhr = new XMLHttpRequest();
@@ -8,35 +8,31 @@ function chargerNetflopXml(){
     //utiliser la methode 'GET' = pour récupérer des données
     // le nom du fichier à charger
     // - true = requete asynchrone (ne bloque pas le navigateur et l'execution du code)
-    xhr.open('GET', 'netflop.xml', true);
+    xhr.open('GET', 'netflop.json', true);
 
     // Définir le gestionnaire d'evenement pour le chargement
     xhr.onload = function (){
         //vérifie si la requete réussi
         // status 200 = OK (succès)
         if(xhr.status === 200){
-            // Parser le XML avec DOMPARSER
+            // Parser le JSON avec DOMPARSER
             // on crée une instance de DOMParser
-            let parser = new DOMParser();
-            //console.log(perser)
-            //Parse le texte xml reçu et convertir en Document XML
-            //xhr.reponseText = le contenu du fichier XML en texte
-            //'text/xml" = type MIME pour indiquer que c'est du XML
-            let xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
+            let data = JSON.parse(xhr.responseText);
+            console.log(data);
 
             // Afficher les différentes catégories
-            afficherFilmsXML(xmlDoc);
-            afficherSeriesXML(xmlDoc);
-            afficherDocuXML(xmlDoc);
-            afficherMangaXML(xmlDoc);
-            afficherAnimeXML(xmlDoc);
-            afficherShowXML(xmlDoc);
-            afficherConcertXML(xmlDoc);
+            afficherFilmsXML(data.netflop.films.film);
+            afficherSeriesXML(data.netflop.series.serie);
+            afficherDocuXML(data.netflop.documentaires.documentaire);
+            afficherMangaXML(data.netflop.mangas.manga);
+            afficherAnimeXML(data.netflop.animes.anime);
+            afficherShowXML(data.netflop.shows.show);
+            afficherConcertXML(data.netflop.concerts.concert);
 
-            console.log(xmlDoc);
+            console.log(data);
 
         }else{
-            console.error('erreur lors du chargement du fichier XML');
+            console.error('erreur lors du chargement du fichier JSON');
             console.error('status :', xhr.status);
             console.error('message:', xhr.statusText);
         }
@@ -58,10 +54,10 @@ function chargerNetflopXml(){
 /** 
 Fonction pour afficher films depuis le document XML
 
-@param {Document} xmlDoc Document XML parsé par DOMParser
+@param {Document} films Document JSON parsé par DOMParser
 */
 
-function afficherFilmsXML(xmlDoc){
+function afficherFilmsXML(films){
     // Récupérer le conteneur HTML où afficher les films
     let container = document.getElementById('films');
 
@@ -70,19 +66,15 @@ function afficherFilmsXML(xmlDoc){
     titre.textContent = "Films";
     container.appendChild(titre);
 
-    // Récupréer TOUS les éléments <film> du XML
-    //getElementsByTagName() retourne une collection de tous les elements avec ce nom de balise
-    let films = xmlDoc.getElementsByTagName('film');
-    console.log(films);
 
     // Parcourir tous les films (attention films est un HTMLCollection, du coup pas un vrai tableau !)
     for(let i = 0; i < films.length; i++){
-        let filmCard = creerCarteXML(films[i]);
+        let filmCard = creerCarteXML(films[i], "film");
         container.appendChild(filmCard);
     }
 }
 
-function afficherSeriesXML(xmlDoc){
+function afficherSeriesXML(series){
     // Récupérer le conteneur HTML où afficher les séries
     let container = document.getElementById('series');
 
@@ -91,19 +83,14 @@ function afficherSeriesXML(xmlDoc){
     titre.textContent = "Séries";
     container.appendChild(titre);
 
-    // Récupréer TOUS les éléments <series> du XML
-    //getElementsByTagName() retourne une collection de tous les elements avec ce nom de balise
-    let series = xmlDoc.getElementsByTagName('serie');
-    console.log(series);
-
     // Parcourir toutes les séries (attention series est un HTMLCollection, du coup pas un vrai tableau !)
     for(let i = 0; i < series.length; i++){
-        let serieCard = creerCarteXML(series[i]);
+        let serieCard = creerCarteXML(series[i], "serie");
         container.appendChild(serieCard);
     }
 }
 
-function afficherDocuXML(xmlDoc){
+function afficherDocuXML(documentaires){
     // Récupérer le conteneur HTML où afficher les séries
     let container = document.getElementById('documentaires');
 
@@ -112,19 +99,14 @@ function afficherDocuXML(xmlDoc){
     titre.textContent = "Documentaires";
     container.appendChild(titre);
 
-    // Récupréer TOUS les éléments <series> du XML
-    //getElementsByTagName() retourne une collection de tous les elements avec ce nom de balise
-    let documentaires = xmlDoc.getElementsByTagName('documentaire');
-    console.log(documentaires);
-
     // Parcourir toutes les séries (attention series est un HTMLCollection, du coup pas un vrai tableau !)
     for(let i = 0; i < documentaires.length; i++){
-        let documentaireCard = creerCarteXML(documentaires[i]);
+        let documentaireCard = creerCarteXML(documentaires[i], "documentaire");
         container.appendChild(documentaireCard);
     }
 }
 
-function afficherMangaXML(xmlDoc){
+function afficherMangaXML(mangas){
     // Récupérer le conteneur HTML où afficher les séries
     let container = document.getElementById('mangas');
 
@@ -133,19 +115,15 @@ function afficherMangaXML(xmlDoc){
     titre.textContent = "Mangas";
     container.appendChild(titre);
 
-    // Récupréer TOUS les éléments <series> du XML
-    //getElementsByTagName() retourne une collection de tous les elements avec ce nom de balise
-    let mangas = xmlDoc.getElementsByTagName('manga');
-    console.log(mangas);
 
     // Parcourir toutes les séries (attention series est un HTMLCollection, du coup pas un vrai tableau !)
     for(let i = 0; i < mangas.length; i++){
-        let mangaCard = creerCarteXML(mangas[i]);
+        let mangaCard = creerCarteXML(mangas[i], "manga");
         container.appendChild(mangaCard);
     }
 }
 
-function afficherAnimeXML(xmlDoc){
+function afficherAnimeXML(animes){
     // Récupérer le conteneur HTML où afficher les séries
     let container = document.getElementById('animes');
 
@@ -154,19 +132,15 @@ function afficherAnimeXML(xmlDoc){
     titre.textContent = "Animes";
     container.appendChild(titre);
 
-    // Récupréer TOUS les éléments <series> du XML
-    //getElementsByTagName() retourne une collection de tous les elements avec ce nom de balise
-    let animes = xmlDoc.getElementsByTagName('anime');
-    console.log(animes);
 
     // Parcourir toutes les séries (attention series est un HTMLCollection, du coup pas un vrai tableau !)
     for(let i = 0; i < animes.length; i++){
-        let animeCard = creerCarteXML(animes[i]);
+        let animeCard = creerCarteXML(animes[i], "anime");
         container.appendChild(animeCard);
     }
 }
 
-function afficherShowXML(xmlDoc){
+function afficherShowXML(shows){
     // Récupérer le conteneur HTML où afficher les séries
     let container = document.getElementById('shows');
 
@@ -175,19 +149,15 @@ function afficherShowXML(xmlDoc){
     titre.textContent = "shows";
     container.appendChild(titre);
 
-    // Récupréer TOUS les éléments <series> du XML
-    //getElementsByTagName() retourne une collection de tous les elements avec ce nom de balise
-    let shows = xmlDoc.getElementsByTagName('show');
-    console.log(shows);
 
     // Parcourir toutes les séries (attention series est un HTMLCollection, du coup pas un vrai tableau !)
     for(let i = 0; i < shows.length; i++){
-        let showCard = creerCarteXML(shows[i]);
+        let showCard = creerCarteXML(shows[i], "show");
         container.appendChild(showCard);
     }
 }
 
-function afficherConcertXML(xmlDoc){
+function afficherConcertXML(concerts){
     // Récupérer le conteneur HTML où afficher les séries
     let container = document.getElementById('concerts');
 
@@ -196,14 +166,10 @@ function afficherConcertXML(xmlDoc){
     titre.textContent = "concerts";
     container.appendChild(titre);
 
-    // Récupréer TOUS les éléments <series> du XML
-    //getElementsByTagName() retourne une collection de tous les elements avec ce nom de balise
-    let concerts = xmlDoc.getElementsByTagName('concert');
-    console.log(concerts);
 
     // Parcourir toutes les séries (attention series est un HTMLCollection, du coup pas un vrai tableau !)
     for(let i = 0; i < concerts.length; i++){
-        let concertCard = creerCarteXML(concerts[i]);
+        let concertCard = creerCarteXML(concerts[i], "concert");
         container.appendChild(concertCard);
     }
 }
@@ -213,21 +179,21 @@ function afficherConcertXML(xmlDoc){
 
 /**
  * Fonction générique pour créer une carte d'affichage à partir d'un élément XML
- * @param {element} item - element XML (film, serie, etc)
+ * @param {element} item - element JSON (film, serie, etc)
  * @returns {HTMLElement} - element div reprentant la carte
  */
-function creerCarteXML(item){
+function creerCarteXML(item, itemType){
     // creer le conteneur de la carte
     //creer une div pour la carte
     let card = document.createElement('div');
     card.className = 'card';
 
-    // Récupérer l'id de l'élément depuis l'attribut id
-let itemId = item.getAttribute('id');
+//     // Récupérer l'id de l'élément depuis l'attribut id
+// let itemId = item.getAttribute('id');
 
-// Récupérer le nom de la balise XML pour déterminer la catégorie
-let itemType = item.tagName.toLowerCase();  
-
+// // Récupérer le nom de la balise XML pour déterminer la catégorie
+// let itemType = item.tagName.toLowerCase();  
+let itemId = item.id;
 // Vérifier que l'id existe avant de rendre la card cliquable
 if (itemId && itemType) {
   // Ajouter l'événement au clic
@@ -240,23 +206,23 @@ if (itemId && itemType) {
     //extraire les données du XML
 
     // recuperer le nom depuis la balise <nom>
-    let nom = item.getElementsByTagName('nom')[0].textContent;
+    let nom = item.nom;
 
     // recuperer le genre depuis la baslise <genre>
-    let genre = item.getElementsByTagName('genre')[0].textContent;
+    let genre = item.genre;
 
     // recuperer le réalisateur depuis la baslise <realisateur>
-    let realisateur = item.getElementsByTagName('realisateur')[0].textContent;
+    let realisateur = item.realisateur;
 
     // recuperer la date de sortie depuis la baslise <dateSortie>
-    let dateSortie = item.getElementsByTagName('dateSortie')[0].textContent;
+    let dateSortie = item.dateSortie;
 
     // recuperer le resumé depuis la baslise <resumer>
     //trim() = supprimer les espaces au début et à la fin
-    let resumer = item.getElementsByTagName('resumer')[0].textContent.trim();
+    let resumer = item.resumer;
 
     //récupérer l'url de l'image dpuis la balise <url>
-    let url = item.getElementsByTagName('url')[0].textContent;
+    let url = item.url;
 
     // creer un element img pour afficher l'image 
     let img = document.createElement('img');

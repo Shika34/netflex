@@ -14,31 +14,25 @@ function chargerItemDetail(){
     let itemId = urlParams.id;
     let itemType = urlParams.type;
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'netflop.xml', true);
+     xhr.open('GET', 'netflop.json', true);
 
     // Définir le gestionnaire d'evenement pour le chargement
     xhr.onload = function (){
         //vérifie si la requete réussi
         // status 200 = OK (succès)
         if(xhr.status === 200){
-            // Parser le XML avec DOMPARSER
+            // Parser le JSON avec DOMPARSER
             // on crée une instance de DOMParser
-            let parser = new DOMParser();
-            //console.log(perser)
-            //Parse le texte xml reçu et convertir en Document XML
-            //xhr.reponseText = le contenu du fichier XML en texte
-            //'text/xml" = type MIME pour indiquer que c'est du XML
-            let xmlDoc = parser.parseFromString(xhr.responseText, 'text/xml');
-            let item = chercherItemParType(xmlDoc, itemId, itemType);
+            let data = JSON.parse(xhr.responseText);
+            console.log(data);
 
-            console.log(item);
-            
-            afficherDetailItem(item, itemType);
-
-            console.log(xmlDoc);
+            // Afficher les différentes catégories
+            afficherDetailItem(itemId, itemType);
+            let item = chercherItemParType(data, itemId, itemType);
+            console.log(data);
 
         }else{
-            console.error('erreur lors du chargement du fichier XML');
+            console.error('erreur lors du chargement du fichier JSON');
             console.error('status :', xhr.status);
             console.error('message:', xhr.statusText);
         }
@@ -53,19 +47,21 @@ function chargerItemDetail(){
     //envoyer la requete
     xhr.send();
 
-      
 }
 
-function chercherItemParType(xmlDoc, itemId, itemType){
-    //on va rechercher l'élément de notre xml par son tyle (films, séries etc...)
-    let items = xmlDoc.getElementsByTagName(itemType);
+
+function chercherItemParType(data, itemId, itemType){
+    //on va rechercher l'élément de notre xml par son style (films, séries etc...)
+    let items = data.netflop[itemType+"s"];
+    // let idNetflop = data.netflop.item;
+    console.log(data.netflop);
 
     //on parcourt la liste des items
     for(i = 0; i < items.length; i++){
         let item = items[i];
 
         //on vérifie si l'item  a un attribut id
-        if(item.hasAttribute('id') && item.getAttribute('id') === itemId){
+        if(itemId && itemType){
             return item;
         }
         // else{
@@ -76,30 +72,29 @@ function chercherItemParType(xmlDoc, itemId, itemType){
 
 
 
-function afficherDetailItem(item, itemType){
+function afficherDetailItem(item){
    
     
     
     let card = document.createElement('div');
     card.className = 'card';
     // recuperer le nom depuis la balise <nom>
-    let nom = item.getElementsByTagName('nom')[0].textContent;
-
+    let nom = item.nom
     // recuperer le genre depuis la baslise <genre>
-    let genre = item.getElementsByTagName('genre')[0].textContent;
+    let genre = item.genre;
 
     // recuperer le réalisateur depuis la baslise <realisateur>
-    let realisateur = item.getElementsByTagName('realisateur')[0].textContent;
+    let realisateur = item.realisateur;
 
     // recuperer la date de sortie depuis la baslise <dateSortie>
-    let dateSortie = item.getElementsByTagName('dateSortie')[0].textContent;
+    let dateSortie = item.dateSortie;
 
     // recuperer le resumé depuis la baslise <resumer>
     //trim() = supprimer les espaces au début et à la fin
-    let resumer = item.getElementsByTagName('resumer')[0].textContent.trim();
+    let resumer = item.resumer;
 
     //récupérer l'url de l'image dpuis la balise <url>
-    let url = item.getElementsByTagName('url')[0].textContent;
+    let url = item.url;
 
     // creer un element img pour afficher l'image 
     let img = document.createElement('img');
