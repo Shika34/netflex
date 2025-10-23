@@ -164,7 +164,7 @@ function afficherDetailItem(item, itemType){
 
 
 
-console.log(chargerItemDetail());
+chargerItemDetail();
 
 
 
