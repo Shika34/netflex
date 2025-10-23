@@ -52,22 +52,39 @@ function chargerItemDetail(){
 
 function chercherItemParType(data, itemId, itemType){
     //on va rechercher l'élément de notre xml par son style (films, séries etc...)
-    let items = data.netflop[itemType+"s"];
+    // let items = data.netflop[itemType+"s"][itemType];
     // let idNetflop = data.netflop.item;
-    console.log(data.netflop);
+    console.log("Items", items);
+    let categoryMap = {
+        'film':{categorie:'films', tableau: data.netflop.films.film},
+        'serie':{categorie:'series', tableau: data.netflop.series.serie},
+        'documentaire':{categorie:'documentaires', tableau: data.netflop.documentaires.documentaire},
+        'manga':{categorie:'manga', tableau: data.netflop.mangas.manga},
+        'anime':{categorie:'animes', tableau: data.netflop.animes.anime},
+        'show':{categorie:'shows', tableau: data.netflop.shows.show},
+        'concert':{categorie:'concerts', tableau: data.netflop.concerts.concert}
+    };
+
+    let config = categoryMap[itemType];
+    
+    if(!config){
+        return null;
+        console.log("le type n'existe pas");
+    }
+
+
 
     //on parcourt la liste des items
-    for(i = 0; i < items.length; i++){
-        let item = items[i];
-
+    
         //on vérifie si l'item  a un attribut id
-        if(itemId && itemType){
-            return item;
+        if(config.tableau && Array.isArray(config.tableau)){
+            for(let i = 0; i < config.tableau.length; i++){
+                if (config.tableau[i].id === itemId){
+                return config.tableau[i];
+            }  
         }
-        // else{
-        //     console.error('There is a problem, (itemId not found...)');
-        // }
     }
+    return null;
 }
 
 
@@ -79,7 +96,7 @@ function afficherDetailItem(item){
     let card = document.createElement('div');
     card.className = 'card';
     // recuperer le nom depuis la balise <nom>
-    let nom = item.nom
+    let nom = item.nom;
     // recuperer le genre depuis la baslise <genre>
     let genre = item.genre;
 
