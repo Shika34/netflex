@@ -1,5 +1,5 @@
 // Netflop verion XMLHttpRequest
-
+JSON.parse();
 function chargerNetflopXml(){
     // Créer un nouvel objet XMLHttpRequest 
     let xhr = new XMLHttpRequest();
